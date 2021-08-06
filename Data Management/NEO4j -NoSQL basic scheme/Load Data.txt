@@ -1,0 +1,23 @@
+Sergio Muñoz González
+1.CARGA DE NODOS Y RELACIONES
+
+Carga de estudiantes
+LOAD CSV WITH HEADERS FROM "file:///estudiante.csv" AS csvLine CREATE (e:Estudiante { id: toInteger(csvLine.id), nombre: csvLine.nombre})
+
+Carga de profesores
+LOAD CSV WITH HEADERS FROM "file:///profesor.csv" AS csvLine CREATE (p:Profesor { id: toInteger(csvLine.id), nombre: csvLine.nombre})
+
+Carga de relación “esAmigo” entre estudiantes
+LOAD CSV WITH HEADERS FROM "file:///esAmigo.csv" AS csvLine MATCH(e1:Estudiante),(e2:Estudiante) where e1.id= toInteger(csvLine.id1) and e2.id= toInteger(csvLine.id2) create (e1)-[m:esAmigo]->(e2) return m
+Carga de asignaturas
+
+LOAD CSV WITH HEADERS FROM "file:///asignaturas.csv" AS csvLine CREATE (e:Asignatura { id: toInteger(csvLine.id), nombre: csvLine.nombre, curso: toInteger(csvLine.curso),semestre: toInteger(csvLine.semestre),creditos: toInteger(csvLine.creditos)})
+
+Carga de relación “imparte” entre profesor y asignatura
+LOAD CSV WITH HEADERS FROM "file:///imparte.csv" AS csvLine MATCH(p:Profesor),(a:Asignatura) where p.id= toInteger(csvLine.id1) and a.id= toInteger(csvLine.id2) create (p)-[m:Imparte]->(a) return m
+Carga de relación “matriculado” entre estudiante y asignatura
+
+LOAD CSV WITH HEADERS FROM "file:///matriculado.csv" AS csvLine match(e:Estudiante),(a:Asignatura) where e.id= toInteger(csvLine.id1) and a.id= toInteger(csvLine.id2) create (e)-[m:Matriculado]->(a) return m
+Carga de relación “trabajaCon” entre profesores
+
+LOAD CSV WITH HEADERS FROM "file:///trabajaCon.csv" AS csvLine match(p1:Profesor),(p2:Profesor) where p1.id= toInteger(csvLine.id1) and p2.id= toInteger(csvLine.id2) create (p1)-[m:trabajaCon]->(p2) return m

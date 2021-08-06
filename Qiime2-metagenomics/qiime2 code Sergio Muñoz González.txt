@@ -1,0 +1,150 @@
+﻿#Practica Qiime2 de metagenómica
+#Alumno:Sergio Muñoz Gonzalez
+
+
+qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' \
+                   --input-path samplemanifest \
+                   --output-path paired-end-demux.qza \
+                   --input-format PairedEndFastqManifestPhred33
+
+
+qiime demux summarize --i-data paired-end-demux.qza --o-visualization paired-end-demux.qzv
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs paired-end-demux.qza \
+  --p-trim-left-f 19 \
+  --p-trunc-len-f 240 \
+  --p-trim-left-r 20 \
+  --p-trunc-len-r 155 \
+  --o-representative-sequences rep-seqs.qza \
+  --o-table table.qza \
+  --o-denoising-stats stats.qza \
+  --p-n-threads 7 \
+  --p-n-reads-learn 1921748
+
+
+qiime metadata tabulate \
+  --m-input-file stats.qza \
+  --o-visualization stats.qzv
+
+qiime feature-table summarize \
+  --i-table table.qza \
+  --o-visualization table.qzv \
+  --m-sample-metadata-file metadata
+
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs.qza \
+  --o-visualization rep-seqs.qzv
+
+** Phylogenetic distances determination using MAFFT and FastTree **
+
+qiime phylogeny align-to-tree-mafft-fasttree \
+                --i-sequences rep-seqs.qza \
+                --o-alignment aligned-rep-seqs.qza \
+                --o-masked-alignment masked-aligned-rep-seqs.qza \
+                --o-tree unrooted-tree.qza \
+                --o-rooted-tree rooted-tree.qza \ 
+                --p-n-threads 1 \
+                --p-mask-max-gap-frequency 1 \
+                --p-mask-min-conservation 0.4  
+               
+qiime tools import \
+      --type 'FeatureData[Sequence]' \
+      --input-path 85_otus.fasta \
+      --output-path 85_otus.qza
+
+qiime tools import \
+     --type 'FeatureData[Taxonomy]' \
+     --input-format HeaderlessTSVTaxonomyFormat \
+     --input-path 85_otu_taxonomy.txt \
+     --output-path ref-taxonomy.qza
+
+** Assignment database training **
+
+qiime feature-classifier extract-reads \
+      --i-sequences 85_otus.qza \
+      --p-f-primer GTGYCAGCMGCCGCGGTAA \
+      --p-r-primer GGACTACHVGGGTWTCTAAT \
+      --p-min-length 100 \
+      --p-max-length 400 \
+      --p-trunc_len 0 \
+      --p-trim-left 0 \
+      --p-identity 0.8 \ 
+      --o-reads ref-seqs.qza
+
+
+qiime feature-classifier fit-classifier-naive-bayes \
+      --i-reference-reads ref-seqs.qza \
+      --i-reference-taxonomy ref-taxonomy.qza \
+      --o-classifier classifier.qza	
+
+En este anterior todos los parámetros están exactamente iguales
+
+** Taxonomic assignation **
+
+qiime feature-classifier classify-sklearn --i-reads rep-seqs.qza \
+                                          --i-classifier classifier.qza \
+                                          --p-n-jobs 7 \
+                                          --p-reads-per-batch 0 \
+                                          --output-dir taxa
+
+qiime tools export --input-path taxa/classification.qza --output-path taxa
+qiime taxa barplot --i-table table.qza \
+                   --i-taxonomy taxa/classification.qza \
+                   --m-metadata-file metadata \
+                   --o-visualization taxa/taxa_barplot.qzv
+
+qiime feature-table group --i-table table.qza \
+                          --p-axis sample \
+                          --p-mode mean-ceiling \
+                          --m-metadata-file metadata \
+                          --m-metadata-column Day_Temp \
+                          --o-grouped-table table_sample.qza
+
+qiime feature-table summarize \
+  --i-table table_sample.qza \
+  --o-visualization table_sample.qzv \
+  --m-sample-metadata-file sample_metadata
+
+qiime taxa barplot --i-table table_sample.qza \
+                   --i-taxonomy taxa/classification.qza \
+                   --m-metadata-file metadata \
+                   --o-visualization taxa/taxa_sample_barplot.qzv
+
+** Study of the Diversity **
+
+qiime diversity alpha-rarefaction --i-table table.qza \
+                                  --p-max-depth 288000 \
+                                  --p-steps 100 \
+                                  --i-phylogeny rooted-tree.qza \
+                                  --m-metadata-file metadata \
+                                  --o-visualization rarefaction_curves.qzv
+
+** Core Diversity determination **
+
+qiime diversity core-metrics-phylogenetic --i-table table.qza \
+                                          --i-phylogeny rooted-tree.qza \
+                                          --p-sampling-depth 85000 \
+                                          --m-metadata-file metadata \
+                                          --p-n-jobs-or-threads 2 \
+                                          --output-dir diversity
+
+qiime diversity alpha-group-significance \
+ --i-alpha-diversity diversity/shannon_vector.qza \
+ --m-metadata-file metadata \
+ --o-visualization diversity/shannon_compare_groups.qzv
+
+qiime diversity core-metrics-phylogenetic --i-table table_sample.qza \
+                                          --i-phylogeny rooted-tree.qza \
+                                          --p-sampling-depth 101046 \
+                                          --m-metadata-file metadata_sample \
+                                          --p-n-jobs-or-threads 2 \
+                                          --output-dir diversity_sample
+
+qiime diversity beta-group-significance --i-distance-matrix diversity/weighted_unifrac_distance_matrix.qza \
+                                        --m-metadata-file metadata \
+                                        --m-metadata-column Day_Temp \
+                                        --o-visualization diversity/weighted_unifrac_plant_significance.qzv \
+                                        --method permanova \
+                                        --p-pairwise True
+

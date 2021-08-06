@@ -1,0 +1,20 @@
+# Asparagine or aspartic acid
+a:D,N
+# Glutamine or glutamic acid 
+g:E,Q
+# Isoleucine or leucine  
+i:I,L
+# Hydrophilic
+h:S,T,H,N,Q,E,D,K,R
+# Hydrophobic
+d:V,I,L,F,W,Y,M
+# Aromatic
+r:F,W,Y,H
+# Non-aromatic, Aliphatic
+n:V,I,L,M
+# Small
+s:P,G,A,S
+# Positively charged
++:K,R,H
+# Negatively charged
+-:D,E

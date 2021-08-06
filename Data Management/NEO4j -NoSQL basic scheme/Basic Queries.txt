@@ -1,0 +1,27 @@
+Sergio Muñoz González
+2.QUERIES DE CONSULTA
+A.Names of subjects taught by Professor Clarap
+match (p:Profesor)-[m:Imparte]->(a:Asignatura) where p.nombre = 'Clarap' return a.nombre
+
+B.Names of first year subjects
+match (a:Asignatura) where a.curso = 1 return a.nombre
+
+C.Names of subjects arranged alphabetically
+match (a:Asignatura) return a.nombre order by a.nombre
+
+D.Names of third or fourth year subjects
+match (a:Asignatura) where a.curso = 3 or a.curso = 4 return a.nombre
+
+E.Eliminate the semester property of the nodes Subject
+match (a:Asignatura) remove a.semestre return a
+
+F.Change the name of one of the subjects
+match (a:Asignatura{nombre:'Estadistica'}) set a.nombre = 'Bioestadistica' return a
+
+G.Number ofsubjects in which the student Maria is enrolled
+match (e:Estudiante)-[m:Matriculado]->(a:Asignatura) where e.nombre = 'Maria' return count(a)
+En caso de que haya varias Marías matriculadas, se tendría que usar e.id = el id de la María especifica.
+El uso del id es importante ya que puede haber valores repetidos en los nombres u otras propiedades en una clase de nodos, al ser una propiedad con valor único para cada nodo. (ej. Puede haber dos estudiantes con nombre maría, pero cada una tendría un id único). En este caso utilizamos e.names porque tenemos una lista de estudiantes muy pequeña y sabemos que no hay nombres repetidos a priori, pero por lo general lo conveniente es utilizar la propiedad id.
+
+H.Names of Pedro's friends
+match (e1:Estudiante)-[m:esAmigo]->(e2:Estudiante) where e1.nombre = 'Pedro' return e2.nombre

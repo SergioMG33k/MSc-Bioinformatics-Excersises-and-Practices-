@@ -1,0 +1,20 @@
+Name	PeakFile/Annotation	#features[ref=27140]	Coverage(bp)[ref=18230060]	AvgFeatureSize[ref=671]	Overlap(#peaks)	Overlap(bp)	Expected Overlap(bp, gsize=2.00e+09)	Log Ratio Enrichment	Log P-value(+ underrepresented)	P-value
+protein-coding	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/protein-coding.ann.txt	810026	77617662	95	3111	985076	707487	0.33	-79.61	2.66e-35
+utr3	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/utr3.ann.txt	60308	35783609	593	972	504044	326168	0.44	-66.99	8.08e-30
+exons	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/exons.ann.txt	858240	89311164	104	3415	1079999	814073	0.28	-65.39	3.98e-29
+coding	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/coding.ann.txt	687674	53248459	77	2777	619954	485361	0.24	-29.17	2.14e-13
+tts	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/tts.ann.txt	75327	35512941	471	913	419707	323701	0.26	-22.53	1.64e-10
+introns	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/introns.ann.txt	670430	1308126388	1951	18002	12243495	11923611	0.03	-21.50	4.62e-10
+snoRNA	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/snoRNA.ann.txt	637	59200	92	19	2044	539	1.33	-3.06	4.69e-02
+miRNA	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/miRNA.ann.txt	2989	310519	103	35	4605	2830	0.49	-1.39	2.48e-01
+scRNA	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/scRNA.ann.txt	4	951	237	0	0	8	-2.08	0.01	9.91e-01
+snRNA	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/snRNA.ann.txt	250	10208	40	0	0	93	-4.53	0.14	8.72e-01
+rRNA	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/rRNA.ann.txt	191	16700	87	0	0	152	-5.02	0.22	8.03e-01
+ncRNA	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/ncRNA.ann.txt	28512	9324734	327	270	80576	84995	-0.05	1.22	2.94e-01
+pseudo	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/pseudo.ann.txt	9164	2662001	290	67	18484	24264	-0.27	2.67	6.91e-02
+utr5	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/utr5.ann.txt	110258	7259319	65	467	55348	66168	-0.18	3.03	4.82e-02
+promoters	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/promoters.ann.txt	75327	37512839	497	780	277092	341930	-0.21	12.59	3.40e-06
+cpgIsland	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/cpgIsland.ann.txt	28691	21842742	761	139	38066	199097	-1.65	152.04	9.32e-67
+centromeres	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/centromeres.ann.txt	24	72000000	3000000	0	0	656282	-13.39	1000.73	0.00e+00
+gaps	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/gaps.ann.txt	457	239845127	524825	0	0	2186195	-14.60	3487.57	0.00e+00
+intergenic	/home/jorgesd/anaconda3/envs/homer-env/share/homer/.//data/genomes/hg19//annotations/basic/intergenic.ann.txt	18544	1714993126	92482	8188	4852702	15632213	-1.17	24579.29	0.00e+00

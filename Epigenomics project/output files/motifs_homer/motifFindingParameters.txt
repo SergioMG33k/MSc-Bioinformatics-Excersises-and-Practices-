@@ -1,0 +1,1 @@
+cmd = ./state3/Monoc1_2_state3.bed hg19 ./motifs_homer/ -size 200 -mask

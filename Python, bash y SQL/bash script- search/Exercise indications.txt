@@ -1,0 +1,18 @@
+You want to create a command (script) called busca.sh that supports three input parameters. The first will be a directory, the second a list with character strings and the third the name of a file.
+
+The script will search in the directories from the root directory that has been passed as the first parameter, the files that contain any of the strings included in the list.
+The script will generate a single file (whose name is the third parameter script) that will contain the following information arranged in columns. The columns will be separated by tabs and the rows ordered by number of occurrences
+
+    basename_file   path_file    ocurrences
+
+Example:
+
+    $>./busca.sh /home/eduardo "@gmail.com @uam.es @upm.es @uc3m.es" mail.txt
+
+    $>cat mail.txt
+    mail.txt    /home/eduardo    15   
+    protesta.html    /home/eduardo/casa    5
+
+ 
+	
+tarea.html tarea.html 

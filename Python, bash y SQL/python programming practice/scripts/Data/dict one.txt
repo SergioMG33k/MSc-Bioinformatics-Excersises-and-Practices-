@@ -1,0 +1,7 @@
+# vocales
+v:A,E,I,O,U
+# suena como C K Q
+c:C,K,Q
+# similar a B
+b:B,P,D,M
+z:C,Z,S

@@ -1,0 +1,29 @@
+id,nombre,curso,semestre,creditos
+1,Fisica,1,1,3
+2,Fundamentos de programacion,1,1,6
+3,Matematicas I,1,1,3
+4,Quimica,1,1,3
+5,Biologia celular e histologia,1,1,3
+6,Ampliacion de quimica,1,2,3
+7,Biologia vegetal y animal,1,2,3
+8,Conceptos de biologia,1,2,6
+9,Estadistica,1,2,6
+10,Matematicas,1,2,3
+11,Bioquimica estructural,2,1,6
+12,Economia y gestion de empresas,2,1,6
+13,Analisis instrumental,2,1,3
+14,Genetica,2,1,9
+15,Microbiologia,2,2,6
+16,Cultivos celulares,2,2,6
+17,Bioinformatica,2,2,3
+18,Tecnicas avanzadas de Biotecnologia,3,1,6
+19,Fisiologia de sistemas,3,1,6
+20,Inmunologia,3,1,6
+21,Virologia,3,2,9
+22,Produccion forestal,3,2,3
+23,Biomica,3,2,6
+24,Procesos y productos biotecnologicos,4,1,6
+25,Aspectos legales de la biotecnologia,4,1,6
+26,Mejora genetica vegetal,4,1,6
+27,Practicas en empresas,4,2,9
+28,Trabajo fin de grado,4,2,12
