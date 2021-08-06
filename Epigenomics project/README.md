@@ -1,3 +1,10 @@
+
+
+This work has been developed for the subject Transcriptomics, Genomic Regulation and Epigenomics in MSc of Bioninformatics and Computational Biology at Autonomous University of Madrid(UAM)
+
+An epigenomic analysis of the Enhancer (H3K4me1) was performed in monocitytes.
+Output files in this project have been gathered using software like PeakAnnotator, HOMER, GREAT or UCSC browser.
+
 # AUTHORS: GROUP 3 (Enhancer - H3K4me1+H3K27ac). State 3
 * Lucía de Dios Blázquez
 * Sergio Muñoz González
@@ -5,11 +12,6 @@
 * Jorge Sastre Domínguez
 * Daniel Alejandro Prieto Cebollero
 
-
-This work has been developed for the subject Transcriptomics, Genomic Regulation and Epigenomics in MSc of Bioninformatics and Computational Biology at Autonomous University of Madrid(UAM)
-
-An epigenomic analysis of the Enhancer (H3K4me1) was performed in monocitytes.
-Output files in this project have been gathered using software like PeakAnnotator, HOMER, GREAT or UCSC browser.
 
 # TASKS:
 Obtain the segments that have the same state in the two replicates of monocytes. 
