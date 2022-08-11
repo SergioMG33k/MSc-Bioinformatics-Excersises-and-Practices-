@@ -19,7 +19,7 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP00000
 gunzip resources/proteome/UP000005640_9606.fasta.gz  #descomprimimos el archivo .gz, con gunzip, y nos quedamos con con el proteoma en formato fasta , en la carpeta donde esta el .gz por defecto(ya que no se indica una ruta diferente)
 
 conda install -y decoypyrat   #instalamos el paquete decoypyrat en el environment, para poder realizar la decoy database de manera local a partir del proteoma
-decoypyrat resources/proteome/UP000005640_9606.fasta -o resources/proteome/UP000005640_9606.decoy.fasta --decoy_prefix DECOY #generamos una base de datos con los decoy , generados a partir del fasta del proteoma original , con la opccion --decoy prefix, establecemos un prefico para marca a los elementos "señuelo"(DECOYS), y asi saber cuando el hit ha sido contra un señuelo o contra un target mas adelante, con el fin de ayudarnos a estimar por ejemplo el FDR
+decoypyrat resources/proteome/UP000005640_9606.fasta -o resources/proteome/UP000005640_9606.decoy.fasta --decoy_prefix DECOY #generamos una base de datos con los decoy , generados a partir del fasta del proteoma original , con la opccion --decoy prefix, establecemos un prefijo para marcar los elementos "señuelo"(DECOYS), y asi saber cuando el hit ha sido contra un señuelo o contra un target mas adelante, con el fin de ayudarnos a estimar por ejemplo el FDR
 cat resources/proteome/UP000005640_9606.fasta resources/proteome/UP000005640_9606.decoy.fasta > resources/proteome/UP000005640_9606.target-decoy.fasta #generamos el conjunto de datos en los que se combinan los target del fasta original y los DECOYS , generados en el comando anterior
 
 conda install -y crux-toolkit #instalamos el paquete crux
